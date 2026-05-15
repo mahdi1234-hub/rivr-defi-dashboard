@@ -164,12 +164,14 @@ export default function Chat() {
                         <ChainOfThought>
                           {msg.reasoning.map((step, si) => (
                             <ChainOfThoughtStep key={si}>
-                              <ChainOfThoughtTrigger>{step.title}</ChainOfThoughtTrigger>
-                              <ChainOfThoughtContent>
-                                {step.items.map((item, ii) => (
-                                  <ChainOfThoughtItem key={ii}>{item}</ChainOfThoughtItem>
-                                ))}
-                              </ChainOfThoughtContent>
+                              <ChainOfThoughtTrigger>{step.title ?? "Thinking…"}</ChainOfThoughtTrigger>
+                              {(step.items ?? []).length > 0 && (
+                                <ChainOfThoughtContent>
+                                  {(step.items ?? []).map((item, ii) => (
+                                    <ChainOfThoughtItem key={ii}>{item}</ChainOfThoughtItem>
+                                  ))}
+                                </ChainOfThoughtContent>
+                              )}
                             </ChainOfThoughtStep>
                           ))}
                         </ChainOfThought>
