@@ -1,0 +1,9 @@
+{
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm run typecheck:libs && PORT=3000 BASE_PATH=/ pnpm --filter @workspace/rivr run build",
+  "outputDirectory": "artifacts/rivr/dist/public",
+  "framework": null,
+  "rewrites": [
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}
